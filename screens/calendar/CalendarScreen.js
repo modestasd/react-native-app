@@ -1,8 +1,7 @@
 import React,{useEffect,useState,useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-
-import { Text, View, StyleSheet,TouchableOpacity,ScrollView,FlatList,Dimensions} from 'react-native';
+import { Text, View, StyleSheet,FlatList} from 'react-native';
 
 import CalendarEvent from '../../components/calendar/CalendarEvent';
 import CalendarDay from '../../components/calendar/CalendarDay';

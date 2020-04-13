@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Text, View, StyleSheet,TouchableOpacity,Dimensions } from 'react-native';
 
 const CalendarDay = ({dayName, day, onDayClick,isActive, index}) => {
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   calendarDayNumber: {
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: 'bold',
     height: 40,
     textAlign: 'center'
   }, 
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
   },
   activeCalendarDayNumber: { 
     fontSize: 18,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: 'white',
     textAlign: 'center'
   }
-})
+});

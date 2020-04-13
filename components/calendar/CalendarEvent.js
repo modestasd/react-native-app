@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Text, View, StyleSheet,TouchableOpacity,Dimensions } from 'react-native';
 
 const CalendarEvent = ({event, onEventPress}) => {
@@ -57,8 +57,6 @@ const styles = StyleSheet.create({
   },
   timeText: {
     fontSize: 14,
-    fontWeight: 600,
-    
+    fontWeight: 'bold',
   }
-
-})
+});

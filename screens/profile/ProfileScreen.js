@@ -34,13 +34,13 @@ const ProfileScreen = () => {
         style={styles.button}
         onPress={()=> dispatch(logout())}
       >
-         <Text>Atsijungti</Text>
+        <Text>Atsijungti</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
          style={styles.button}
       >
-         <Text>Trinti paskyra</Text>
+        <Text>Trinti paskyra</Text>
       </TouchableOpacity>
     </View>
   );
@@ -67,4 +67,4 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: 20
   },
-})
+});

@@ -6,9 +6,9 @@ const StatisticScreen = () => {
   return (
     <View style={{ flex: 1 }}>
 
-        <TouchableOpacity style={styles.mainDiagram}>
-          <Text>Diagrama</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.mainDiagram}>
+        <Text>Diagrama</Text>
+      </TouchableOpacity>
 
       <View style={styles.statisticContainer}>
         <StatisticItem iconName='car' upperText='Is viso uzsakymu' bottomText='120' />
@@ -18,8 +18,8 @@ const StatisticScreen = () => {
       <View style={styles.statisticContainer}>
         <StatisticItem iconName='check' backgroundColor='green' upperText='Ivykdyti' bottomText='110' />
         <StatisticItem iconName='remove' backgroundColor='red' upperText='Atsaukti' bottomText='10' />
-
       </View>
+      
     </View>
   );
 };

@@ -41,7 +41,7 @@ const HomeScreenNavigator = () => {
       
         <Stack.Screen name="Calendar" component={CalendarScreen}  
           options={{
-            title: <Text style={{marginLeft: 40, fontSize:16, fontWeight: 600}}>{new Date().toLocaleDateString('lt-LT')}</Text>,
+            title: <Text style={{marginLeft: 40, fontSize:16, fontWeight: 'bold'}}>{new Date().toLocaleDateString('lt-LT')}</Text>,
             headerRight: () => (
               <Entypo name="menu" style={{marginRight: 10}} size={30} color="black" onPress={() => navigation.navigate('CalendarOptions')} />
             ),
