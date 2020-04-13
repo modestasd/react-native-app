@@ -1,11 +1,12 @@
-# Sample Snack app
+# Expo app
+Mobile application made with Expo. 
 
-Open the `App.js` file to start writing some code. You can preview the changes directly on your phone or tablet by clicking the **Run** button or use the simulator by clicking **Tap to Play**. When you're done, click **Save** and share the link!
+Things to be added: 
+* Firebase
+* Responsive design
+* Testing 
 
-When you're ready to see everything that Expo provides (or if you want to use your own editor) you can **Export** your project and use it with [expo-cli](https://docs.expo.io/versions/latest/introduction/installation.html).
+App lets user to view ordered services in calendar, add new services, view statistic of his company, send notifications to consumer, add new calendar items manually, etc.. 
 
-All projects created in Snack are publicly available, so you can easily share the link to this project via link, or embed it on a web page with the **Embed** button.
-
-If you're having problems, you can tweet to us [@expo](https://twitter.com/expo) or ask in our [forums](https://forums.expo.io).
-
-Snack is Open Source. You can find the code on the [GitHub repo](https://github.com/expo/snack-web).
+Home Screen
+![Home](https://user-images.githubusercontent.com/32367171/79117803-c6133200-7d94-11ea-98e7-9af9c21b6744.jpeg)
