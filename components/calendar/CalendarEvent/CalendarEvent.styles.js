@@ -3,30 +3,30 @@ import { Dimensions } from 'react-native';
 
 export const CalendarEventWrapper = styled.TouchableOpacity`
     flex-direction: row;
-    justifyContent: 'space-between;
+    justifyContent: space-between;
     margin: 10px;
-    width: ${Dimensions.get("window").width - 20};
+    width: ${Dimensions.get("window").width - 20}px;
     height: 100px;
     shadow-color: black;
     shadow-offset: {width: 0, height: 2};
     shadow-opacity: 0.2;
-    shadow-radius: 8;
+    shadow-radius: 8px;
     elevation: 5;
-    border-radius: 5; 
+    border-radius: 5px; 
     background-color: white;
 `;
 
 export const TimeWrapper = styled.View`
     justify-content: center;
     align-content: center;
-    padding-left: 20;
+    padding-left: 20px;
     width: 35%;
     background-color: #fafafa;
 `;
 
 export const Time = styled.Text`
-    font-size: 14px,
-    font-weight: bold,
+    font-size: 14px;
+    font-weight: bold;
 `; 
 
 

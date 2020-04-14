@@ -1,27 +1,27 @@
 import styled from 'styled-components/native';
 
 export const MenuEventWrapper = styled.TouchableOpacity`
-    align-tems: center;
+    align-items: center;
     width: 85%;
     height: 30%;
     margin-top: 40px;
     shadow-color: black;
     shadow-offset: {width: 0, height: 2};
     shadow-opacity: 0.2;
-    shadow-radius: 8;
+    shadow-radius: 8px;
     elevation: 5;
-    border-radius: 10;
+    border-radius: 10px;
     background-color: white;
 `;
 
 export const Header = styled.Text`
-    font-size: 18;
+    font-size: 18px;
     font-weight: bold;
     background-color: #fafafa;
     width: 100%;
     text-align: center;
     padding: 12px;
-    height: 50;
+    height: 50px;
     margin-bottom: 20px;
 `; 
 
