@@ -1,7 +1,6 @@
 import React,{useState} from 'react';
 import { Text, View, StyleSheet,TextInput, Button,TouchableOpacity } from 'react-native';
 import {useDispatch} from 'react-redux';
-
 import {login} from '../../redux/actions';
 
 const LoginScreen = () => {
@@ -32,9 +31,9 @@ const LoginScreen = () => {
           onChangeText={text => setPassword(text)} 
         />
       </View>
-      <TouchableOpacity style={styles.button} onPress={onButtonClick}>
-        <Text style={styles.buttonText}>Prisijungti</Text>
-      </TouchableOpacity> 
+        <TouchableOpacity style={styles.button} onPress={onButtonClick}>
+          <Text style={styles.buttonText}>Prisijungti</Text>
+        </TouchableOpacity> 
     </View>
   );
 };

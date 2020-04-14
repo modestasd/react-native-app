@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet,TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet,TouchableOpacity,TouchableHighlight } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation,useRoute } from '@react-navigation/native';
 
@@ -77,4 +77,4 @@ const styles = StyleSheet.create({
     marginBottom: 5
   }
 
-});
+})

@@ -2,7 +2,8 @@
 Mobile application made with Expo. 
 
 Things to be added: 
-* Firebase
+* Styled-components (in progress)
+* Firebase (in progress)
 * Full calendar 
 * Responsive design
 * Testing 

@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { View, Text,Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { Entypo } from '@expo/vector-icons';
 
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../screens/home/HomeScreen';
 import CalendarScreen from '../screens/calendar/CalendarScreen';
 import CalendarOptionsScreen from '../screens/calendar/CalendarOptionsScreen';
 import ServicesScreen from '../screens/service/ServicesScreen';
