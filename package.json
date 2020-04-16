@@ -1,0 +1,32 @@
+{
+  "name": "app-test",
+  "version": "0.0.0",
+  "description": "No description",
+  "author": null,
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "devDependencies": {
+    "babel-preset-expo": "^7.0.0"
+  },
+  "dependencies": {
+    "expo": "^37.0.0",
+    "react": "16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
+    "redux": "latest",
+    "firebase": "latest",
+    "react-is": "latest",
+    "react-redux": "latest",
+    "redux-thunk": "latest",
+    "react-navigation": "4.1.1",
+    "styled-components": "latest",
+    "react-native-screens": "^2.0.0",
+    "@react-navigation/stack": "latest",
+    "react-native-reanimated": "1.0.0",
+    "@react-navigation/native": "5.0.5",
+    "@react-navigation/bottom-tabs": "latest",
+    "react-native-safe-area-context": "^0.6.0",
+    "@react-native-community/masked-view": "^0.1.0",
+    "@react-native-community/async-storage": "latest",
+    "react-native-gesture-handler": "latest"
+  }
+}
