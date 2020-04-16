@@ -1,5 +1,8 @@
 import React from 'react';
+<<<<<<< HEAD
 import PropTypes from 'prop-types';
+=======
+>>>>>>> f777f70db10bc4f484ea0ec85039631414761b68
 import { FontAwesome } from '@expo/vector-icons';
 
 import Colors from '../../../helpers/colors';
@@ -16,10 +19,13 @@ const MenuItem = ({iconName,onPressHandler, itemName}) => {
   );
 };
 
+<<<<<<< HEAD
 MenuItem.propTypes = {
 	iconName: PropTypes.string.isRequired,
 	onPressHandler: PropTypes.func.isRequired,
   itemName: PropTypes.string.isRequired,
 };
 
+=======
+>>>>>>> f777f70db10bc4f484ea0ec85039631414761b68
 export default MenuItem;

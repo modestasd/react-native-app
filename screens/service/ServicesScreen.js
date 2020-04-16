@@ -1,6 +1,5 @@
 import React,{useEffect} from 'react';
-import { Text, View, StyleSheet,TouchableOpacity, FlatList, Dimensions} from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { View,FlatList, } from 'react-native';
 
 import {useSelector, useDispatch} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
