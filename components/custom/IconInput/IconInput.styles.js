@@ -13,7 +13,7 @@ export const IconTextInput = styled.TextInput`
     width: 85%;
     padding-right: 15px;
     margin-vertical: 10px;
-    padding-left: 60px;
+    padding-left: 65px;
     position: absolute;
     shadow-color: black;
     shadow-offset: {width: 0, height: 2};
@@ -30,9 +30,10 @@ export const IconWrapper = styled.View`
     justify-content: center;
     background-color: #ececec;
     margin-vertical: 10px;
-    height: 50px
-    width: 55px;
-    padding-horizontal: 15px;
+    height: 50px;
+    width: 60px;
+    padding-left: 18px;
+    padding-right: 15px;
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
 `;

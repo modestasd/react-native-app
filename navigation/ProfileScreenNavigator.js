@@ -10,7 +10,7 @@ const ProfileScreenNavigator = () => {
 
   return (
       <Stack.Navigator>
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Profile" options={{headerShown: false}} component={ProfileScreen} />
         <Stack.Screen name="EditProfile" component={EditProfileScreen} />
       </Stack.Navigator>
   );

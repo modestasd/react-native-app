@@ -1,25 +1,41 @@
 import React from 'react';
-import { Text, View, StyleSheet,TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet,TouchableOpacity,Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {logout} from '../../redux/actions';
+import ScreenWrapper from '../../components/layout/ScreenWrapper';
 
 const ProfileScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const user = useSelector(({auth}) => auth.user);
- 
+ console.log(user)
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text style={styles.nameText}>{user.name}</Text>
+    <ScreenWrapper>
+
+      <Image
+        source={{ uri: user.profileImage }}
+        style={{
+        height: 250,
+        width: 250,
+        marginTop: 20,
+        alignItems: 'stretch',
+        resizeMode: 'cover',
+        backgroundColor: 'white',
+        borderRadius: 50,
+
+         }}
+      />
+
+      <Text style={styles.nameText}>{user.fullName}</Text>
       <Text>{user.email}</Text>
       <Text>{user.company}</Text>
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('EditProfile')}
+        onPress={() => navigation.navigate('EditProfile', {fullName: user.fullName, image: user.profileImage })}
        >
         <Text>Redaguoti profili</Text>
       </TouchableOpacity>
@@ -35,14 +51,12 @@ const ProfileScreen = () => {
         onPress={()=> dispatch(logout())}
       >
          <Text>Atsijungti</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> 
 
-      <TouchableOpacity
-         style={styles.button}
-      >
-         <Text>Trinti paskyra</Text>
+      <TouchableOpacity style={{marginTop: 20,}}>
+         <Text style={{color: 'red'}}>Trinti paskyra</Text>
       </TouchableOpacity>
-    </View>
+    </ScreenWrapper>
   );
 };
 
@@ -53,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     width: '85%',
-    height: '15%',
+    height: 40,
     justifyContent: 'center',
     marginTop: 20,
     shadowColor: 'black',

@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CalendarDay expect to match latest snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "opacity": 1,
+      "width": 60,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "grey",
+          "fontSize": 16,
+          "height": 20,
+          "marginBottom": 5,
+        },
+      ]
+    }
+  >
+    Pirm
+  </Text>
+  <View
+    isActive={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#4169e1",
+          "borderRadius": 50,
+          "height": 35,
+          "paddingBottom": 5,
+          "paddingLeft": 5,
+          "paddingRight": 5,
+          "paddingTop": 5,
+          "width": "60%",
+        },
+      ]
+    }
+  >
+    <Text
+      isActive={true}
+      style={
+        Array [
+          Object {
+            "color": "white",
+            "fontSize": 18,
+            "fontWeight": "bold",
+            "height": 40,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      1
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`CalendarDay has 1 child 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  isTVSelectable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "flexBasis": 0,
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "opacity": 1,
+      "width": 60,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "grey",
+          "fontSize": 16,
+          "height": 20,
+          "marginBottom": 5,
+        },
+      ]
+    }
+  >
+    Pirm
+  </Text>
+  <View
+    isActive={true}
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#4169e1",
+          "borderRadius": 50,
+          "height": 35,
+          "paddingBottom": 5,
+          "paddingLeft": 5,
+          "paddingRight": 5,
+          "paddingTop": 5,
+          "width": "60%",
+        },
+      ]
+    }
+  >
+    <Text
+      isActive={true}
+      style={
+        Array [
+          Object {
+            "color": "white",
+            "fontSize": 18,
+            "fontWeight": "bold",
+            "height": 40,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      1
+    </Text>
+  </View>
+</View>
+`;

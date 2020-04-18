@@ -36,7 +36,7 @@ const HomeScreenNavigator = () => {
        }}
       > 
         <Stack.Screen name="Home" options={{headerShown: false}} component={HomeScreen} />
-        <Stack.Screen name="Event" component={EventScreen} />
+        <Stack.Screen name="Event" options={{headerShown: false}} component={EventScreen} />
         <Stack.Screen name="Contact" component={ContactScreen} />
       
         <Stack.Screen name="Calendar" component={CalendarScreen}  
@@ -52,9 +52,9 @@ const HomeScreenNavigator = () => {
         />
         <Stack.Screen name="CalendarOptions" component={CalendarOptionsScreen} />
 
-        <Stack.Screen name="Services" component={ServicesScreen} />
+        <Stack.Screen name="Services" options={{headerShown: false}} component={ServicesScreen} />
         <Stack.Screen name="CreateService" component={CreateServiceScreen} />
-        <Stack.Screen name="ServiceOverview" component={ServiceOverviewScreen} />
+        <Stack.Screen name="ServiceOverview" options={{headerShown: false}} component={ServiceOverviewScreen} />
 
         <Stack.Screen name="Statistic" component={StatisticScreen} />
 

@@ -1,8 +1,10 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text } from 'react-native';
 
 import { useNavigation,useRoute } from '@react-navigation/native';
 import BottomIconsContainer from '../../components/layout/BottomIconsContainer';
+import ScreenWrapper from '../../components/layout/ScreenWrapper';
+import Card from '../../components/custom/Card';
 
 const EventScreen = () => {
   const navigation = useNavigation();
@@ -10,15 +12,15 @@ const EventScreen = () => {
   const {date, fullName,service, car, moreDetails} = route.params.event;
     
   return (
-    <View style={{ flex: 1, alignItems: 'center' }}>
-      <View style={styles.mainView}>
+    <ScreenWrapper>
+      <Card>
         <Text style={{ fontSize: 30, textAlign: "center" , marginBottom: 50}}>{fullName}</Text>
         <Text style={{ fontSize: 20}}>{date}</Text>
         <Text style={{ fontSize: 20}}>Paslauga: {service}</Text>
         <Text style={{ fontSize: 20, marginBottom: 20}}>Masina: {car}</Text>
         <Text style={{ fontSize: 17}}>Papildoma informacija: {moreDetails}</Text>
 
-      </View>
+      </Card>
 
       <BottomIconsContainer 
         leftIconName='arrow-left' 
@@ -26,24 +28,8 @@ const EventScreen = () => {
         leftOnClickHandler={() => navigation.navigate('Home')}
         rightOnClickHandler={() => navigation.navigate('Contact')}
       />
-    </View>
+    </ScreenWrapper>
   );
 };
 
 export default EventScreen;
-
-const styles = StyleSheet.create({
-  mainView: {
-    padding: 10,
-    width: '85%',
-    height: '80%',
-    marginVertical: 20,
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 5,
-    borderRadius: 10, 
-    backgroundColor: 'white',
-  }
-});

@@ -29,8 +29,10 @@ export const RightDetailsWrapper = styled.View`
     background-color: #fafafa;
     height: 100%;
     padding-vertical: 10px;
-    border-radius: 10px; 
+    border-top-right-radius: 10px; 
+    border-bottom-right-radius: 10px; 
     padding-horizontal: 20px;
+    width: 120px;
 `;
 
 export const Price = styled.Text`
@@ -40,4 +42,9 @@ export const Price = styled.Text`
 export const Time = styled.Text`
 
 `;
+
+export const Inactive = styled.Text`
+  font-size: 16px;
+`;
+
 

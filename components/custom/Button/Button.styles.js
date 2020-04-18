@@ -1,10 +1,11 @@
 import styled from 'styled-components/native';
 
 export const ButtonWrapper = styled.TouchableOpacity`
-    backgroundColor: #2b5fff;
+    background-color: ${({color}) => color };
     padding-vertical: 10px;
     padding-horizontal: 35px;
     border-radius: 30px;
+    margin-bottom: 10px;
 `;
 
 export const Text = styled.Text`

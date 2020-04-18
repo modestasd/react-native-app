@@ -5,10 +5,10 @@ import { FontAwesome } from '@expo/vector-icons';
 import {IconInputWrapper, IconTextInput, IconWrapper } from './IconInput.styles';
 import Colors from '../../../helpers/colors';
 
-const IconInput = ({placeholder, onChangeHandler, iconName, color}) => {
+const IconInput = ({onChangeHandler, iconName, color, ...otherProps}) => {
   return (
       <IconInputWrapper>
-        <IconTextInput placeholder={placeholder} onChangeText={text => onChangeHandler(text)} />
+        <IconTextInput onChangeText={text => onChangeHandler(text)} {...otherProps} />
           <IconWrapper>
             <FontAwesome name={iconName} size={24} color={color} /> 
           </IconWrapper>

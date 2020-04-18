@@ -2,23 +2,22 @@ import {authConstants} from '../constants';
 import deviceStorage from '../../helpers/storage';
 import firebase from '../../helpers/firebase';
  
-const loginRequest = () => {
+export const loginRequest = () => {
     return {
       type: authConstants.LOGIN_REQUEST
     };
 };
   
-const loginSuccess = (user) => {
+export const loginSuccess = (user) => {
     return {
       type: authConstants.LOGIN_SUCCESS,
       payload: user
     };
 };
   
-const loginFailure = () => {
+export const loginFailure = () => {
     return {
       type: authConstants.LOGIN_FAILURE,
-      payload: true
     };
 };
 
@@ -26,7 +25,7 @@ export const login = (email, password) => dispatch => {
     dispatch(loginRequest());
     firebase.auth().signInWithEmailAndPassword(email,password)
         .then( ({user}) => {
-          dispatch(loginSuccess({email: user.email, name: user.displayName}));
+          dispatch(loginSuccess({email: user.email, fullName: user.displayName, profileImage: user.photoURL}));
           deviceStorage.saveKey('authToken', user.uid);
         })
         .catch(err => {
@@ -35,7 +34,7 @@ export const login = (email, password) => dispatch => {
 };
 
   
-const logoutSuccess = () => {
+export const logoutSuccess = () => {
     return {
       type: authConstants.LOGOUT_SUCCESS,
     };

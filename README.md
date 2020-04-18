@@ -6,7 +6,7 @@ Things to be added:
 * Firebase (in progress)
 * Full calendar 
 * Responsive design
-* Testing 
+* Testing (in progress)
 
 This app lets user to view ordered services in calendar, create/edit/delete services, view statistic of his company, send notifications to consumer, add/delete new calendar items manually, etc.. 
 

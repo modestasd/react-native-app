@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text, View, StyleSheet,TouchableOpacity } from 'react-native';
 import { Linking } from 'expo';
+
+import ContactMenuItem from '../../components/event/ContactMenuItem';
+import ScreenWrapper from '../../components/layout/ScreenWrapper'
 
 const ContactScreen = () => {
 
@@ -17,56 +19,13 @@ const ContactScreen = () => {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleCompletePress}
-      >
-        <Text>Darbas atliktas</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleCompletePress}
-      >
-        <Text>Perkelti</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleCallPress}
-      >
-        <Text>Skambinti</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleSMSPress}
-      >
-        <Text>Siusti SMS</Text>
-      </TouchableOpacity>
-
-    </View>
+    <ScreenWrapper>
+      <ContactMenuItem title='Darbas atliktas' onPressEvent={handleCompletePress} iconName='check' />
+      <ContactMenuItem title='Perkelti' onPressEvent={handleCompletePress} iconName='event' />
+      <ContactMenuItem title='Skambinti' onPressEvent={handleCallPress} iconName='phone' />
+      <ContactMenuItem title='Siusti SMS' onPressEvent={handleSMSPress} iconName='chat' />
+    </ScreenWrapper>
   );
 };
 
 export default ContactScreen;
-
-const styles = StyleSheet.create({
-  button: {
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderRadius: 10,
-    padding: 10,
-    width: '85%',
-    height: '15%',
-    justifyContent: 'center',
-    marginTop: 20,
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 5,
-  },
-
-})

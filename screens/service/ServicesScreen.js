@@ -1,5 +1,5 @@
 import React,{useEffect} from 'react';
-import { View,FlatList, } from 'react-native';
+import { FlatList} from 'react-native';
 
 import {useSelector, useDispatch} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import {getServices} from '../../redux/actions';
 import BottomIconsContainer from '../../components/layout/BottomIconsContainer';
 import ServiceMenuItem from '../../components/service/ServiceMenuItem';
+import ScreenWrapper from '../../components/layout/ScreenWrapper';
 
 const ServicesScreen = () => {
   const navigation = useNavigation();
@@ -19,11 +20,12 @@ const ServicesScreen = () => {
   },[dispatch]);
 
   return (
-    <View style={{ flex: 1, alignItems: 'center' }}>
+    <ScreenWrapper>
  
       <FlatList
             data={services}
             numColumns={1}
+            keyExtractor={item => item.name}
             renderItem={({ item }) =>
             //create service details component
             <ServiceMenuItem
@@ -31,6 +33,7 @@ const ServicesScreen = () => {
               title={item.name}
               price={item.price}
               time={item.duration}
+              isActive={item.isActive}
             />
             } 
           />
@@ -41,7 +44,7 @@ const ServicesScreen = () => {
         leftOnClickHandler={() => navigation.navigate('Home')}
         rightOnClickHandler={() => navigation.navigate('CreateService')}
       />
-    </View>
+    </ScreenWrapper>
   );
 };
 

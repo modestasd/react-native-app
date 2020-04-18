@@ -4,16 +4,22 @@ import PropTypes from 'prop-types';
 import { FontAwesome } from '@expo/vector-icons';
 
 import Colors from '../../../helpers/colors';
-import {ServiceMenuItemWrapper, Title,RightDetailsWrapper, Price, Time} from './ServiceMenuItem.styles';
+import {ServiceMenuItemWrapper, Title,RightDetailsWrapper, Price, Time,Inactive} from './ServiceMenuItem.styles';
 
-const ServiceMenuItem = ({onPressHandler, title, price, time}) => {
+const ServiceMenuItem = ({onPressHandler, title, price, time,isActive}) => {
   return (
     <ServiceMenuItemWrapper onPress={onPressHandler}>
       <Title>{title}</Title>
-      <RightDetailsWrapper>
-        <Price>{price}</Price>
-        <Time>{time}</Time>
-      </RightDetailsWrapper>
+            <RightDetailsWrapper>
+      {
+        isActive ? 
+          <>
+            <Price>{price}</Price>
+            <Time>{time}</Time>
+          </>
+        : <Inactive>Sustabdytas</Inactive>
+      }
+            </RightDetailsWrapper>
     </ServiceMenuItemWrapper>
   );
 };
@@ -23,6 +29,7 @@ ServiceMenuItem.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired
 };
 
 export default ServiceMenuItem;

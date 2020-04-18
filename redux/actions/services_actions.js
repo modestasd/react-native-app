@@ -40,7 +40,7 @@ let services = [
     price: '60-100 euru',
     duration: '1 diena',
     moreInfo: 'lorem ipsum dsssakd lakd;l ksa;ldkas kdas;l kdas;l kdas;lkdas kd;lsak d;laks d;lka;l kd;ldsa ka;ls kd;las kd;la kd;lsa kd;lask d;laks d;laks d;      laksd ;lask d;la',
-    isActive: true,
+    isActive: false,
 
   },
     {

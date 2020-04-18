@@ -1,10 +1,13 @@
 import React,{useState} from 'react';
 import { Text, View, StyleSheet, Modal,Picker,Alert } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
 import StepIndicator from '../../components/custom/StepIndicator';
 import IconInput from '../../components/custom/IconInput';
 import Button from '../../components/custom/Button';
+import ScreenWrapper from '../../components/layout/ScreenWrapper';
 
+import Colors from '../../helpers/colors';
 
 const CreateServiceScreen = () => {
   const [serviceName, setServiceName] = useState('');
@@ -13,7 +16,7 @@ const CreateServiceScreen = () => {
   // const [language, setLanguage] = useState('java');
   console.log(currentStep);
   return (
-    <View style={{ flex: 1, alignItems: 'center'}}>
+    <ScreenWrapper>
       <Text>Sukurti paslauga</Text>
       <StepIndicator totalSteps={5} currentStep={currentStep}/>
       <IconInput placeholder='Paslaugos pavadinimas' iconName='car' onChangeHandler={text => setServiceName(text)} />
@@ -22,7 +25,7 @@ const CreateServiceScreen = () => {
       <View style={styles.bottomContainer}> 
         <Button buttonText='Kitas' onClickHandler={()=>setCurrentStep(currentStep < 5 ? currentStep+1 : currentStep)} />
       </View>
-    </View>
+    </ScreenWrapper>
   );
 };
 

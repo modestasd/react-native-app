@@ -2,31 +2,52 @@
   "name": "app-test",
   "version": "0.0.0",
   "description": "No description",
-  "author": null,
+  "author": "Modestas D.",
   "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*)"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/coverage/**",
+      "!**/node_modules/**",
+      "!**/babel.config.js",
+      "!**/jest.setup.js"
+    ]
+  },
   "main": "node_modules/expo/AppEntry.js",
   "devDependencies": {
-    "babel-preset-expo": "^7.0.0"
+    "babel-preset-expo": "^7.0.0",
+    "jest-expo": "^37.0.0",
+    "jest-styled-components": "^7.0.2",
+    "react-test-renderer": "^16.13.1"
   },
   "dependencies": {
-    "expo": "^37.0.0",
-    "react": "16.9.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
-    "redux": "latest",
-    "firebase": "latest",
-    "react-is": "latest",
-    "react-redux": "latest",
-    "redux-thunk": "latest",
-    "react-navigation": "4.1.1",
-    "styled-components": "latest",
-    "react-native-screens": "^2.0.0",
-    "@react-navigation/stack": "latest",
-    "react-native-reanimated": "1.0.0",
-    "@react-navigation/native": "5.0.5",
-    "@react-navigation/bottom-tabs": "latest",
-    "react-native-safe-area-context": "^0.6.0",
-    "@react-native-community/masked-view": "^0.1.0",
     "@react-native-community/async-storage": "latest",
-    "react-native-gesture-handler": "latest"
+    "@react-native-community/masked-view": "^0.1.0",
+    "@react-navigation/bottom-tabs": "latest",
+    "@react-navigation/native": "5.0.5",
+    "@react-navigation/stack": "latest",
+    "expo": "^37.0.0",
+    "expo-image-picker": "^8.1.0",
+    "firebase": "latest",
+    "react": "16.9.0",
+    "react-is": "latest",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-37.0.0.tar.gz",
+    "react-native-gesture-handler": "latest",
+    "react-native-reanimated": "1.0.0",
+    "react-native-safe-area-context": "^0.6.0",
+    "react-native-screens": "^2.0.0",
+    "react-navigation": "4.1.1",
+    "react-redux": "latest",
+    "redux": "latest",
+    "redux-thunk": "latest",
+    "styled-components": "latest"
   }
 }

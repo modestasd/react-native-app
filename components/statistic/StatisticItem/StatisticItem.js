@@ -7,7 +7,7 @@ import Colors from '../../../helpers/colors';
 
 const StatisticItem = ({iconName,onPressHandler,title, bottomText, backgroundColor}) => {
   return (
-    <StatisticItemWrapper backgroundColor={backgroundColor} >
+    <StatisticItemWrapper backgroundColor={backgroundColor} onPress={onPressHandler}>
       <Title>{title}</Title>
       <FontAwesome name={iconName} size={35} color="white" />
       <BottomText>{bottomText}</BottomText>
