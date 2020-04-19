@@ -1,4 +1,5 @@
 import {servicesConstants} from '../constants';
+import {servicesCollection} from '../../helpers/firebase';
 
 const getServicesRequest = () => {
     return {
@@ -21,52 +22,50 @@ const getServicesFailure = () => {
 
 export const getServices = () => dispatch => {
   dispatch(getServicesRequest());
-  dispatch(getServicesSuccess(services));
+    let services = [];
+    try {
+        servicesCollection.onSnapshot(snapshot => {
+            snapshot.forEach(doc=>{
+                services.push(doc.data());
+            });
+        });
+
+        dispatch(getServicesSuccess(services));
+    } catch (error) {
+        console.log(error)
+        dispatch(getServicesFailure());
+    }
 }
 
-let services = [
-  {
-    id: '1',
-    name: 'Padangos',
-    price: '60-100 euru',
-    duration: '1 diena',
-    moreInfo: 'lorem ipsum dsssakd lakd;l ksa;ldkas kdas;l kdas;l kdas;lkdas kd;lsak d;laks d;lka;l kd;ldsa ka;ls kd;las kd;la kd;lsa kd;lask d;laks d;laks d;      laksd ;lask d;la',
-    isActive: true,
 
-  },
-    {
-          id: '2',
-    name: 'Dazymas',
-    price: '60-100 euru',
-    duration: '1 diena',
-    moreInfo: 'lorem ipsum dsssakd lakd;l ksa;ldkas kdas;l kdas;l kdas;lkdas kd;lsak d;laks d;lka;l kd;ldsa ka;ls kd;las kd;la kd;lsa kd;lask d;laks d;laks d;      laksd ;lask d;la',
-    isActive: false,
+const createServiceRequest = () => {
+    return {
+      type: servicesConstants.CREATE_SERVICE_REQUEST
+    };
+};
+  
+const createServiceSuccess = (services) => {
+    return {
+      type: servicesConstants.CREATE_SERVICE_SUCCESS,
+      payload: services
+    };
+};
+  
+const createServicesFailure = () => {
+    return {
+      type: servicesConstants.CREATE_SERVICE_FAILURE
+    };
+}; 
 
-  },
-    {
-    id: '3',
-    name: 'Dar vienas',
-    price: '60-100 euru',
-    duration: '1 diena',
-    moreInfo: 'lorem ipsum dsssakd lakd;l ksa;ldkas kdas;l kdas;l kdas;lkdas kd;lsak d;laks d;lka;l kd;ldsa ka;ls kd;las kd;la kd;lsa kd;lask d;laks d;laks d;      laksd ;lask d;la',
-    isActive: true,
 
-  },
-    {
-          id: '4',
-    name: 'Trecias',
-    price: '60-100 euru',
-    duration: '1 diena',
-    moreInfo: 'lorem ipsum dsssakd lakd;l ksa;ldkas kdas;l kdas;l kdas;lkdas kd;lsak d;laks d;lka;l kd;ldsa ka;ls kd;las kd;la kd;lsa kd;lask d;laks d;laks d;      laksd ;lask d;la',
-    isActive: false,
-  },
-    {
-      id: '5',
-    name: 'Ketvirtas',
-    price: '60-100 euru',
-    duration: '1 diena',
-    moreInfo: 'lorem ipsum dsssakd lakd;l ksa;ldkas kdas;l kdas;l kdas;lkdas kd;lsak d;laks d;lka;l kd;ldsa ka;ls kd;las kd;la kd;lsa kd;lask d;laks d;laks d;      laksd ;lask d;la',
-    isActive: true,
-
-  }
-]
+export const createService = (serviceDetails) => dispatch => { 
+    dispatch(createServiceRequest());
+    servicesCollection.add({...serviceDetails, createdAt: new Date()})
+        .then( () => {
+          dispatch(createServiceSuccess());
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch(createServicesFailure());
+        });
+};

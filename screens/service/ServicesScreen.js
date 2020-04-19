@@ -25,15 +25,15 @@ const ServicesScreen = () => {
       <FlatList
             data={services}
             numColumns={1}
-            keyExtractor={item => item.name}
+            keyExtractor={item => item.createdAt.toString()}
             renderItem={({ item }) =>
             //create service details component
             <ServiceMenuItem
               onPressHandler={() => navigation.navigate('ServiceOverview', {service: item})}
-              title={item.name}
-              price={item.price}
-              time={item.duration}
-              isActive={item.isActive}
+              title={item.serviceName}
+              price={item.priceRange}
+              time={item.timeRange}
+              isActive={item.isServiceEnabled}
             />
             } 
           />

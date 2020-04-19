@@ -8,7 +8,7 @@ export const CalendarEventWrapper = styled.TouchableOpacity`
     width: ${Dimensions.get("window").width - 20}px;
     height: 100px;
     shadow-color: black;
-    shadow-offset: {width: 0, height: 2};
+    shadow-offset: 0 2px;
     shadow-opacity: 0.2;
     shadow-radius: 8px;
     elevation: 5;

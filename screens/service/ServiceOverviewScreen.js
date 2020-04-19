@@ -10,20 +10,20 @@ const ServiceOverviewScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const {name, price,duration, moreInfo, isActive} = route.params.service;
+  const {serviceName, priceRange,timeRange, moreDetails, isServiceEnabled} = route.params.service;
 
   return (
     <ScreenWrapper>
       <Card>
         <View style={{padding: 10}}>
-          <Text style={{ fontSize: 30, textAlign: "center" , marginBottom: 50}}>{name}</Text>
-          <Text style={{ fontSize: 20}}>Trukme: {duration}}</Text>
-          <Text style={{ fontSize: 20, marginBottom: 20}}>Kaina: {price}</Text>
-          <Text style={{ fontSize: 17}}>Papildoma informacija: {moreInfo}</Text>
+          <Text style={{ fontSize: 30, textAlign: "center" , marginBottom: 50}}>{serviceName}</Text>
+          <Text style={{ fontSize: 20}}>Trukme: {timeRange}</Text>
+          <Text style={{ fontSize: 20, marginBottom: 20}}>Kaina: {priceRange}</Text>
+          <Text style={{ fontSize: 17}}>Papildoma informacija: {moreDetails}</Text>
         </View>
           <View  style={styles.actionsContainer}>
             <TouchableOpacity style={{backgroundColor: '#FCE205', paddingHorizontal: 15, paddingVertical: 10,  borderBottomLeftRadius: 10,}}>
-              <Text style={{ fontSize: 20}}>{isActive ? 'Sustabdyti' : 'Aktyvuoti'}</Text>
+              <Text style={{ fontSize: 20}}>{isServiceEnabled ? 'Sustabdyti' : 'Aktyvuoti'}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={{backgroundColor: '#DC143C',  paddingHorizontal: 15, paddingVertical: 10,  borderBottomRightRadius: 10,}}>
               <Text style={{ fontSize: 20, color: 'white'}}>Istrinti</Text>

@@ -7,7 +7,7 @@ export const StatisticItemWrapper = styled.TouchableOpacity`
     margin-horizontal: 10px;
     align-items: center;
     shadow-color: black;
-    shadow-offset: {width: 0, height: 1};
+    shadow-offset: 0 1px;
     shadow-opacity: 0.2;
     shadow-radius: 5px; 
     elevation: 5;

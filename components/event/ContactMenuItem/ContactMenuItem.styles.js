@@ -10,7 +10,7 @@ export const ContactMenuItemWrapper = styled.TouchableOpacity`
     justify-content: center;
     margin-top: 20px;
     shadow-color: black;
-    shadow-offset: {width: 0, height: 2};
+    shadow-offset: 0 2px;
     shadow-opacity: 0.2;
     shadow-radius: 8px;
     elevation: 5;

@@ -6,7 +6,7 @@ export const MenuEventWrapper = styled.TouchableOpacity`
     height: 30%;
     margin-top: 40px;
     shadow-color: black;
-    shadow-offset: {width: 0, height: 2};
+    shadow-offset: 0 2px;
     shadow-opacity: 0.2;
     shadow-radius: 8px;
     elevation: 5;

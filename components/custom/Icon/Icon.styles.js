@@ -7,7 +7,7 @@ export const IconWrapper = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     shadow-color: black;
-    shadow-offset: {width: 0, height: 2};
+    shadow-offset: 0 2px;
     shadow-opacity: 0.2;
     shadow-radius: 8px;
     elevation: 5;
