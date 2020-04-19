@@ -20,11 +20,11 @@ This app lets user to view ordered services in calendar, create/edit/delete serv
 <img src="https://user-images.githubusercontent.com/32367171/79118844-9fa2c600-7d97-11ea-8826-198b6a2e040e.jpeg" width="230" height="400">
 
 ### Service overview screen
-<img src="https://user-images.githubusercontent.com/32367171/79118934-d37deb80-7d97-11ea-9ac2-d0ae015302c3.jpeg" width="230" height="400">
+<img src="https://user-images.githubusercontent.com/32367171/79699538-cb8ee180-8298-11ea-8851-98bff7bca7d3.gif" width="230" height="400">
 
 ### Login screen
 <img src="https://user-images.githubusercontent.com/32367171/79699301-64bcf880-8297-11ea-98da-2242e146d230.gif" width="230" height="400">
 
 ### Create Service screen
-<img src="https://user-images.githubusercontent.com/32367171/79699339-ad74b180-8297-11ea-9bd9-c51cb1388d1c.gif" width="230" height="400">
+<img src="https://user-images.githubusercontent.com/32367171/79699424-3ee42380-8298-11ea-9b67-de36e70505e1.gif" width="230" height="400">
 
