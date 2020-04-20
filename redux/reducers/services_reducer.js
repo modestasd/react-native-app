@@ -12,8 +12,7 @@ export default (state = initialState, action) => {
         case servicesConstants.GET_SERVICES_REQUEST:
             return {
                 ...state,
-                isCreated: false,
-
+                services: []
             }
         case servicesConstants.GET_SERVICES_SUCCESS:
             return {
