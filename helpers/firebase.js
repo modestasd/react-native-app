@@ -22,8 +22,6 @@ const firestore = firebase.firestore();
 
 export const storage = firebase.storage();
 export const servicesCollection = firestore.collection('services');
+export const eventsCollection = firestore.collection('events');
 
 export default firebase;
-
-
-// export const eventsCollection = firestore.collection('events');

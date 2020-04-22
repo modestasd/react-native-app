@@ -1,15 +1,15 @@
 import React,{useState,useEffect} from 'react';
-import { Text, View, StyleSheet,Picker,TouchableOpacity, Switch, ActivityIndicator} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { Text, View, StyleSheet, Switch} from 'react-native';
 import {useDispatch,useSelector} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import StepIndicator from '../../components/custom/StepIndicator';
 import IconInput from '../../components/custom/IconInput';
 import Button from '../../components/custom/Button';
-import ScreenWrapper from '../../components/layout/ScreenWrapper';
-import Modal from '../../components/custom/Modal';
+import ModalOpenButton from '../../components/custom/ModalOpenButton';
+import Picker from '../../components/custom/Picker';
 
+import ScreenWrapper from '../../components/layout/ScreenWrapper';
 import Colors from '../../helpers/colors';
 
 import {createService} from '../../redux/actions';
@@ -47,42 +47,33 @@ const CreateServiceScreen = () => {
 
   useEffect(()=>{
     if(!isCreated) return;
-
+    //add show success message
     navigation.navigate('Home');
-  },[isCreated,navigation])
+  },[isCreated,navigation]);
 
   //to fix picker error and move picker to component, create modal/picker components
   const renderModal = (modalVisible,setModalVisible, pickerDataList, pickerValue, setPickerValue, modalTitle) => {
-    return(
-      <Modal 
-        isVisible={modalVisible} 
+    return( 
+      <Picker 
+        modalTitle={modalTitle}
+        modalVisible={modalVisible}
         onCloseHandler={()=>setModalVisible(false)}
         onSubmitHandler={()=>setModalVisible(false)}
-        title={modalTitle}
-      >
-        <Picker
-          selectedValue={pickerValue || pickerDataList[0]}
-          style={{ width: 200, height: 300}}
-          onValueChange={(itemValue, itemIndex) => setPickerValue(itemValue)}
-        >
-          {pickerDataList.map((item, index) => (
-            <Picker.Item label={item} key={index} value={item} />
-          ))}
-        </Picker>
-      </Modal>
+        pickerDataList={pickerDataList}
+        pickerValue={pickerValue}
+        setPickerValue={(itemValue) => setPickerValue(itemValue)}
+        width={200}
+        height={300}
+      />
     );
   };
 
   ////////Move picker to components in future
   return (
-    <ScreenWrapper>
-    {
-        isCreating ?
-          <ActivityIndicator size="large" color={Colors.mainDark} />
-        :
-        <>
+    <ScreenWrapper isLoading={isCreating}>
           <Text style={{fontSize: 22, fontWeight: 'bold', marginTop: 20}}>Sukurti paslauga</Text>
           <StepIndicator totalSteps={TOTAL_STEPS} currentStep={currentStep}/>
+          
       {
         currentStep == 1 &&
         <>
@@ -94,22 +85,14 @@ const CreateServiceScreen = () => {
 
           <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 20}}>
             <Text style={{fontSize: 15, fontWeight: 'bold', marginRight: 3}}>Trukme nuo: </Text>      
-            <TouchableOpacity
-              style={{padding: 10, borderColor: 'grey', borderWidth: 1}}
-              onPress={()=> setTimeFromModalVisible(true)}
-            >
-              <Text>{timeFrom || 'Pasirinkti laika'}</Text>
-            </TouchableOpacity>
+            <ModalOpenButton title={timeFrom || 'Pasirinkti laika'} onPressHandler={()=>setTimeFromModalVisible(true)}/>
+            
             {timeFromModalVisible && renderModal(timeFromModalVisible,setTimeFromModalVisible,dummyTimeFromList, timeFrom, setTimeFrom, 'Pasirinkite laika')}
-            <Text style={{fontSize: 15, fontWeight: 'bold', marginRight: 3, marginLeft: 3}}>iki: </Text>
-            <TouchableOpacity
-              style={{padding: 10, borderColor: 'grey', borderWidth: 1}}
-              onPress={()=> setTimeToModalVisible(true)}
-            >
-              {timeToModalVisible && renderModal(timeToModalVisible,setTimeToModalVisible,dummyTimeFromList, timeTo, setTimeTo,'Pasirinkite laika')}
 
-              <Text>{timeTo || 'Pasirinkti laika'}</Text>
-            </TouchableOpacity>
+            <Text style={{fontSize: 15, fontWeight: 'bold', marginRight: 3, marginLeft: 3}}>iki: </Text>
+            <ModalOpenButton title={timeTo || 'Pasirinkti laika'} onPressHandler={()=>setTimeToModalVisible(true)}/>
+
+            {timeToModalVisible && renderModal(timeToModalVisible,setTimeToModalVisible,dummyTimeFromList, timeTo, setTimeTo,'Pasirinkite laika')}    
           </View>
         </>
       }
@@ -118,21 +101,13 @@ const CreateServiceScreen = () => {
         currentStep == 2 &&
           <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginBottom: 20}}>
             <Text style={{fontSize: 15, fontWeight: 'bold', marginRight: 3}}>Kaina nuo: </Text>      
-            <TouchableOpacity
-              style={{padding: 10, borderColor: 'grey', borderWidth: 1}}
-              onPress={()=> setPriceFromModalVisible(true)}
-            >
-              <Text>{priceFrom || 'Pasirinkti kaina'}</Text>
-            </TouchableOpacity>
+            <ModalOpenButton title={priceFrom || 'Pasirinkti kaina'} onPressHandler={()=>setPriceFromModalVisible(true)}/>
+
             {priceFromModalVisible && renderModal(priceFromModalVisible,setPriceFromModalVisible,dummyPriceList, priceFrom, setPriceFrom,'Pasirinkite kaina')}
+
             <Text style={{fontSize: 15, fontWeight: 'bold', marginRight: 3, marginLeft: 3}}>iki: </Text>
-            <TouchableOpacity
-              style={{padding: 10, borderColor: 'grey', borderWidth: 1}}
-              onPress={()=> setPriceToModalVisible(true)}
-            >
-              {priceToModalVisible && renderModal(priceToModalVisible,setPriceToModalVisible,dummyPriceList, priceTo, setPriceTo,'Pasirinkite kaina')}
-              <Text>{priceTo || 'Pasirinkti kaina'}</Text>
-            </TouchableOpacity>
+            <ModalOpenButton title={priceTo || 'Pasirinkti kaina'} onPressHandler={()=>setPriceToModalVisible(true)}/>
+            {priceToModalVisible && renderModal(priceToModalVisible,setPriceToModalVisible,dummyPriceList, priceTo, setPriceTo,'Pasirinkite kaina')}
           </View>
       }
 
@@ -160,7 +135,8 @@ const CreateServiceScreen = () => {
       }
 
       <View style={styles.bottomContainer}> 
-        {currentStep > 1 && 
+        {
+          currentStep > 1 && 
           <Button 
             buttonText='Atgal' 
             onClickHandler={()=>setCurrentStep(currentStep > 1 ? currentStep -1 : currentStep)} 
@@ -168,11 +144,12 @@ const CreateServiceScreen = () => {
         }
         <Button 
           buttonText={currentStep == TOTAL_STEPS ? 'Issaugoti' : 'Kitas'} 
-          onClickHandler={()=> { currentStep == TOTAL_STEPS ?  dispatch(createService({...serviceDetails, timeRange: timeFrom.concat(' iki ', timeTo), priceRange: priceFrom.concat(' iki ', priceTo)})) : setCurrentStep(currentStep < TOTAL_STEPS ? currentStep+1 : currentStep)}}
+          onClickHandler={()=> { currentStep == TOTAL_STEPS ?  
+            dispatch(createService({...serviceDetails, timeRange: timeFrom.concat(' iki ', timeTo), priceRange: priceFrom.concat(' iki ', priceTo)})) 
+          : 
+          setCurrentStep(currentStep < TOTAL_STEPS ? currentStep+1 : currentStep)}}
         />
       </View>
- </>
-    }
     </ScreenWrapper> 
   );
 };

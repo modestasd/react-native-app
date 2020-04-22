@@ -1,51 +1,25 @@
 import {authConstants} from '../constants';
 import deviceStorage from '../../helpers/storage';
 import firebase from '../../helpers/firebase';
- 
-export const loginRequest = () => {
-    return {
-      type: authConstants.LOGIN_REQUEST
-    };
-};
-  
-export const loginSuccess = (user) => {
-    return {
-      type: authConstants.LOGIN_SUCCESS,
-      payload: user
-    };
-};
-  
-export const loginFailure = () => {
-    return {
-      type: authConstants.LOGIN_FAILURE,
-    };
-};
+import {actionCreator} from '../../helpers/redux';
 
 export const login = (email, password) => dispatch => { 
-    dispatch(loginRequest());
+    dispatch(actionCreator(authConstants.LOGIN_REQUEST));
     firebase.auth().signInWithEmailAndPassword(email,password)
         .then( ({user}) => {
-          dispatch(loginSuccess({email: user.email, fullName: user.displayName, profileImage: user.photoURL}));
+          dispatch(actionCreator(authConstants.LOGIN_SUCCESS, {email: user.email, fullName: user.displayName, profileImage: user.photoURL}));
           deviceStorage.saveKey('authToken', user.uid);
         })
         .catch(err => {
-            dispatch(loginFailure());
+          dispatch(actionCreator(authConstants.LOGIN_FAILURE));
         });
 };
-
-  
-export const logoutSuccess = () => {
-    return {
-      type: authConstants.LOGOUT_SUCCESS,
-    };
-};
-  
 
 export const logout = () => dispatch => {
     firebase.auth().signOut()
         .then(()=>{
           deviceStorage.deleteKey('authToken');
-          dispatch(logoutSuccess());
+          dispatch(actionCreator(authConstants.LOGOUT_SUCCESS));
         })
         .catch((err)=>{
             console.log(err);

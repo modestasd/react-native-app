@@ -1,6 +1,6 @@
 import {authConstants} from '../../constants';
 import {loginRequest,loginSuccess,loginFailure,logoutSuccess } from '../';
-
+///////////fix test after updating action creator
 describe('loginRequest', () => {
     it('has corect type', () => {
         const action = loginRequest();

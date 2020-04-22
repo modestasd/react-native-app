@@ -1,133 +1,58 @@
 import {servicesConstants} from '../constants';
 import {servicesCollection} from '../../helpers/firebase';
-
-const getServicesRequest = () => {
-    return {
-      type: servicesConstants.GET_SERVICES_REQUEST
-    };
-};
-  
-const getServicesSuccess = (services) => {
-    return {
-      type: servicesConstants.GET_SERVICES_SUCCESS,
-      payload: services
-    };
-};
-  
-const getServicesFailure = () => {
-    return {
-      type: servicesConstants.GET_SERVICES_FAILURE
-    };
-};
+import {actionCreator} from '../../helpers/redux';
 
 export const getServices = () => dispatch => {
-    dispatch(getServicesRequest());
+    dispatch(actionCreator(servicesConstants.GET_SERVICES_REQUEST));
     let services = [];
     servicesCollection.get()
     .then(snapshot => {
         snapshot.forEach(doc=>{
             services.push({id: doc.id, ...doc.data()});
         });
-        dispatch(getServicesSuccess(services));
+        dispatch(actionCreator(servicesConstants.GET_SERVICES_SUCCESS, services));
     })
     .catch(err=> {
-      console.log(err)
-      dispatch(getServicesFailure());
+      console.log(err);
+      dispatch(actionCreator(servicesConstants.GET_SERVICES_FAILURE));
     })
 }
- 
-
-const createServiceRequest = () => {
-    return {
-      type: servicesConstants.CREATE_SERVICE_REQUEST
-    };
-};
-  
-const createServiceSuccess = () => {
-    return {
-      type: servicesConstants.CREATE_SERVICE_SUCCESS,
-    };
-};
-  
-const createServicesFailure = () => {
-    return {
-      type: servicesConstants.CREATE_SERVICE_FAILURE
-    };
-}; 
-
 
 export const createService = (serviceDetails) => dispatch => { 
-    dispatch(createServiceRequest());
+    dispatch(actionCreator(servicesConstants.CREATE_SERVICE_REQUEST));
     servicesCollection.add({...serviceDetails, createdAt: new Date()})
       .then(() => {
-        dispatch(createServiceSuccess());
+        dispatch(actionCreator(servicesConstants.CREATE_SERVICE_SUCCESS));
       })
       .catch(err => {
           console.log(err);
-          dispatch(createServicesFailure());
+          dispatch(actionCreator(servicesConstants.CREATE_SERVICE_FAILURE));
       });
 };
 
-const updateServiceRequest = () => {
-    return {
-      type: servicesConstants.UPDATE_SERVICE_REQUEST
-    };
-};
-  
-const updateServiceSuccess = () => {
-    return {
-      type: servicesConstants.UPDATE_SERVICE_SUCCESS,
-    };
-};
-  
-const updateServiceFailure = () => {
-    return {
-      type: servicesConstants.UPDATE_SERVICE_FAILURE
-    };
-};
 
 export const updateService = (serviceId, updatedService) => dispatch => {
-    dispatch(updateServiceRequest());   
+    dispatch(actionCreator(servicesConstants.UPDATE_SERVICE_REQUEST));  
     servicesCollection.doc(serviceId).update({...updatedService})
     .then(() => {
-      dispatch(updateServiceSuccess());
+      dispatch(actionCreator(servicesConstants.UPDATE_SERVICE_SUCCESS));  
     })
     .catch(err => {
       console.log(err);
-      dispatch(updateServiceFailure());
+      dispatch(actionCreator(servicesConstants.UPDATE_SERVICE_FAILURE));  
     });
 };
 
-
-
-const deleteServiceRequest = () => {
-    return {
-      type: servicesConstants.DELETE_SERVICE_REQUEST
-    };
-};
-  
-const deleteServiceSuccess = () => {
-    return {
-      type: servicesConstants.DELETE_SERVICE_SUCCESS,
-    };
-};
-  
-const deleteServiceFailure = () => {
-    return {
-      type: servicesConstants.DELETE_SERVICE_FAILURE
-    };
-};
 
 export const deleteService = (serviceId) => dispatch => {
-    dispatch(deleteServiceRequest());
+    dispatch(actionCreator(servicesConstants.DELETE_SERVICE_REQUEST));  
     servicesCollection.doc(serviceId).delete()
     .then(() => {
-      dispatch(deleteServiceSuccess());
+      dispatch(actionCreator(servicesConstants.DELETE_SERVICE_SUCCESS));  
     })
     .catch(err => {
       console.log(err);
-      dispatch(deleteServiceFailure());
+      dispatch(actionCreator(servicesConstants.DELETE_SERVICE_FAILURE));  
     });
 };
-
 

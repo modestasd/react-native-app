@@ -1,6 +1,6 @@
 import React,{useEffect,useState,useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { Text, View, StyleSheet,TouchableOpacity,ScrollView,FlatList,Dimensions} from 'react-native';
 
@@ -11,48 +11,50 @@ import {getDayEvents} from '../../redux/actions';
 
 const CalendarScreen = () => {
   const navigation = useNavigation();
+  const route = useRoute();
   const dispatch = useDispatch();
   const daysScroller = useRef(null);
 
-  const [daySelected, setDaySelected] = useState(new Date().getDate());
+  const monthDays = route.params.monthDays;
+  const [dateSelected, setDaySelected] = useState({year: new Date().getFullYear(), month: new Date().getMonth() +1, day:new Date().getDate()});
   const dayEvents = useSelector(({calendar}) => calendar.dayEvents);
-
-
+  
   useEffect(() => {
-    dispatch(getDayEvents(daySelected));
-  }, [dispatch,daySelected]);
+    dispatch(getDayEvents(Object.values(dateSelected).join('-')));
+  }, [dispatch,dateSelected]);
 
-  const onDayClick = (index, day) => {
+  const onDayClick = (index, day,month, year) => {
     //add clicked date
-    if(index > 2){
-      index = day - 2
-    }
     daysScroller.current.scrollToIndex({animated: true, index: index});
-    setDaySelected(day);
+    setDaySelected({year, month: month+1 , day});
   }
 
   return ( 
     <View style={styles.calendarContainer}>
         <View style={styles.calendarHeader}>
           <FlatList 
-            data={testData}
+            data={monthDays}
             horizontal={true} 
+            keyExtractor={item => item.day}
             numColumns={1}
             getItemLayout={(data, index) => (
               {length: 60, offset: 60 * index, index}
             )}
             ref={daysScroller}
-            //redo in the future to get index on load
-            initialScrollIndex={daySelected - 3}
-            renderItem={({ item,index}) =>
+            initialScrollIndex={5}
+            renderItem={({ item,index}) =>{
             //change active styling, center to selected date, add today style
+            return(
               <CalendarDay 
-                isActive={daySelected == item.date ? true : false} 
-                dayName={item.day} 
-                day={item.date} 
+                isActive={dateSelected.day == item.day ? true : false} 
+                dayName={item.dayName} 
+                day={item.day} 
+                month={item.month}
+                year={item.year}
                 onDayClick={onDayClick} 
                 index={index}
               />
+            )}
             }
           />
         </View> 
@@ -93,23 +95,4 @@ const styles = StyleSheet.create({
     elevation: 5,
     marginBottom: 10
   },
-
-
-})
-
-const testData = [
-  {id: 1, date: 1, day: 'Pirm'},
-  {id: 2, date: 2, day: 'Antr'},
-  {id: 3,date: 3, day: 'Trec'},
-  {id: 4,date: 4, day: 'Ketv'},
-  {id: 5,date: 5, day: 'Penkt'},
-  {id: 6,date: 6, day: 'Sest'},
-  {id: 7,date: 7, day: 'Sekm'},
-  {id: 8,date: 8, day: 'Pirm'},
-  {id: 9,date: 9, day: 'Antr'},
-  {id: 10,date: 10, day: 'Trec'},
-  {id: 11,date: 11, day: 'Ketv'},
-  {id: 12,date: 12, day: 'Penkt'},
-  {id: 13,date: 13, day: 'Sest'},
-  {id:14,date: 14, day: 'Sekm'},
-]
+});

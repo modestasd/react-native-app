@@ -1,35 +1,18 @@
 import {userConstants} from '../constants';
-import firebase from '../../helpers/firebase';
- 
-export const updateProfileRequest = () => {
-    return {
-      type: userConstants.UPDATE_PROFILE_REQUEST
-    };
-};
-  
-export const updateProfileSuccess = (updatedUser) => {
-    return {
-      type: userConstants.UPDATE_PROFILE_SUCCESS,
-      payload: updatedUser
-    };
-};
-  
-export const updateProfileFailure = () => {
-    return {
-      type: userConstants.UPDATE_PROFILE_FAILURE,
-    };
-};
+import firebase,{storage} from '../../helpers/firebase';
+import {actionCreator} from '../../helpers/redux';
+
 
 export const updateProfile = (fullName,profileImage) => async  dispatch => { 
-  dispatch(updateProfileRequest());
-  let storage = firebase.storage();
+  dispatch(actionCreator(userConstants.UPDATE_PROFILE_REQUEST));
+
   const blob = await new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.onload = function() {
       resolve(xhr.response);
     };
     xhr.onerror = function(e) {
-      dispatch(updateProfileFailure());
+      dispatch(actionCreator(userConstants.UPDATE_PROFILE_FAILURE));
       reject(new TypeError('Network request failed'));
     };
     xhr.responseType = 'blob';
@@ -46,18 +29,18 @@ export const updateProfile = (fullName,profileImage) => async  dispatch => {
                     storage.ref(`userImages/${user.uid}`).child('profile_photo').getDownloadURL().then(url => {
                         user.updateProfile({photoURL : url})
                             .then(() => {  
-                                dispatch(updateProfileSuccess({email: user.email, fullName: user.displayName, profileImage: user.photoURL}));
+                                dispatch(actionCreator(userConstants.UPDATE_PROFILE_SUCCESS, {email: user.email, fullName: user.displayName, profileImage: user.photoURL}));
                            })
-                           .catch(err => {
-                              dispatch(updateProfileFailure());
+                           .catch(() => {
+                              dispatch(actionCreator(userConstants.UPDATE_PROFILE_FAILURE));
                            })
                     })
-                }, error => {
-                    dispatch(updateProfileFailure());
+                }, () => {
+                    dispatch(actionCreator(userConstants.UPDATE_PROFILE_FAILURE));
                 }) 
         })
-        .catch((err) => {
-            dispatch(updateProfileFailure());
+        .catch(() => {
+          dispatch(actionCreator(userConstants.UPDATE_PROFILE_FAILURE));
         });
 };
 

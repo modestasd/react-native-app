@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import {CalendarDayWrapper,DayName,Day, DayWrapper} from './CalenndarDay.styles';
 
-const CalendarDay = ({dayName, day, onDayClick, isActive,index}) => {
+const CalendarDay = ({dayName, day,month,year, onDayClick, isActive,index}) => {
   return ( 
-    <CalendarDayWrapper onPress={() => onDayClick(index, day)}>
+    <CalendarDayWrapper onPress={() => onDayClick(index, day, month, year)}>
       <DayName>{dayName}</DayName>
       <DayWrapper isActive={isActive}>
         <Day isActive={isActive}>{day}</Day>

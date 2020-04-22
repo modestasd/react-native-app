@@ -1,5 +1,6 @@
 import {userConstants} from '../../constants';
 import {updateProfileRequest, updateProfileSuccess, updateProfileFailure } from '../';
+///////////fix test after updating action creator
 
 describe('updateProfileRequest', () => {
     it('has corect type', () => {

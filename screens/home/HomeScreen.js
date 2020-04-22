@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import {getNearest} from '../../redux/actions';
+import {getCalendarDays} from '../../helpers/calendar';
 
 import MenuItem from '../../components/home/MenuItem';
 import MenuEvent from '../../components/home/MenuEvent';
@@ -23,7 +24,8 @@ const HomeScreen = () => {
         nearestEvent={nearestEvent} 
         onPressEvent={() => navigation.navigate('Event', {event: nearestEvent})}
       />
-      <MenuItem iconName='calendar' itemName='Kalendorius' onPressHandler={() => navigation.navigate('Calendar')} />
+      <MenuItem iconName='calendar' itemName='Kalendorius' onPressHandler={() => navigation.navigate('Calendar', {monthDays: getCalendarDays(new Date().getMonth(), new Date().getFullYear(), new Date().getDate())}
+)} />
       <MenuItem iconName='car' itemName='Paslaugos' onPressHandler={() => navigation.navigate('Services')} />
       <MenuItem iconName='bar-chart' itemName='Statistika' onPressHandler={() => navigation.navigate('Statistic')} />
     </ScreenWrapper>
