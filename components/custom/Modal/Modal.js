@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesome } from '@expo/vector-icons';
 
 import {ModalWrapper, ModalView, ButtonsContainer,ChildrenContainer, CenteredView, Title} from './Modal.styles';
 import Button from '../Button';
 
-const Modal = ({isVisible, isTransparent, onCloseHandler, onSubmitHandler, children, title}) => {
+const Modal = ({isVisible, isTransparent, onCloseHandler, onSubmitHandler, children, title, leftButtonTitle, rightButtonTitle}) => {
+  
     return (
         <ModalWrapper
             animationType="slide"
@@ -19,8 +19,8 @@ const Modal = ({isVisible, isTransparent, onCloseHandler, onSubmitHandler, child
                 {children}
                 </ChildrenContainer>  
                 <ButtonsContainer> 
-                    <Button buttonText='Uzdaryti' color='#ff7491' onClickHandler={onCloseHandler} />
-                    <Button buttonText='Issaugoti' onClickHandler={onSubmitHandler} />
+                <Button buttonText={leftButtonTitle} color='#ff7491' onClickHandler={onCloseHandler} />
+                <Button buttonText={rightButtonTitle} onClickHandler={onSubmitHandler} />
                 </ButtonsContainer>
             </ModalView>
             </CenteredView>
@@ -29,16 +29,20 @@ const Modal = ({isVisible, isTransparent, onCloseHandler, onSubmitHandler, child
 };
 
 Modal.propTypes = {
-	isVisible: PropTypes.bool.isRequired,
-	onCloseHandler: PropTypes.func.isRequired,
+    isVisible: PropTypes.bool.isRequired,
+    onCloseHandler: PropTypes.func.isRequired,
     onSubmitHandler: PropTypes.func.isRequired,
     isTransparent: PropTypes.bool,
-	title: PropTypes.string,
+    title: PropTypes.string,
+    leftButtonTitle: PropTypes.string,
+    rightButtonTitle: PropTypes.string
 };
 
 Modal.defaultProps = {
     isVisible: false,
-    isTransparent: true
+    isTransparent: true,
+    leftButtonTitle: 'Uzdaryti',
+    rightButtonTitle: 'Issaugoti'
 }
 
 export default Modal; 
